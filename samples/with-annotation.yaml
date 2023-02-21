@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-yes
+  labels:
+    app: nginx-yes
+  annotations:
+    apigtw: public
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-yes
+  template:
+    metadata:
+      labels:
+        app: nginx-yes
+    spec:
+      containers:
+      - name: nginx-yes
+        image: nginx:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          protocol: TCP
